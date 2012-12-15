@@ -6,6 +6,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.cheesium.FortiFight2.API.Engine;
+import com.cheesium.FortiFight2.Commands.CommandListener;
+
 public class FortiFight extends JavaPlugin {
 	
 	public static String prefix;
@@ -17,6 +20,8 @@ public class FortiFight extends JavaPlugin {
 		plugin = this;
 		file = getDescription();
 		prefix = "[" + file.getName() + "] " +  file.getVersion() + ": ";
+		Engine.onStartUp();
+		getCommand("fort").setExecutor(new CommandListener());
 		log(Level.INFO, "is now enabled!");
 	}
 	
